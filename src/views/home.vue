@@ -16,11 +16,10 @@
 <script>
 import topBar from './topBar'
 import sideBar from './sideBar'
-import bus from '@/common/bus'
+import {mapState} from 'vuex'
 export default {
   data () {
     return {
-      collapse: false,
       menus: [
         {
           icon: 'el-icon-location',
@@ -112,16 +111,14 @@ export default {
   computed: {
     onRoutes () {
       return this.$route.path.replace('/', '')
-    }
+    },
+    ...mapState({
+      collapse: state => state.simple.collapse
+    })
   },
   components: {
     'top-bar': topBar,
     'side-bar': sideBar
-  },
-  created () {
-    bus.$on('collapse', msg => {
-      this.collapse = msg
-    })
   }
 }
 </script>
@@ -140,7 +137,6 @@ export default {
 .sider-bar:not(.el-menu--collapse){
   width: 250px;
 }
-
 .sidebar > ul {
   height:100%;
 }

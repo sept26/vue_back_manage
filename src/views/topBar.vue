@@ -22,7 +22,6 @@
   </div>
 </template>
 <script>
-import bus from '@/common/bus'
 export default {
   data () {
     return {
@@ -34,7 +33,7 @@ export default {
   methods: {
     collapseChange () {
       this.collapse = !this.collapse
-      bus.$emit('collapse', this.collapse)
+      this.$store.commit('CONTROL_COLLAPSE', this.collapse)
     },
     handleCommand (command) {
       if (command === 'loginout') {
