@@ -37,6 +37,7 @@ export default {
     },
     handleCommand (command) {
       if (command === 'loginout') {
+        localStorage.removeItem('userName')
         this.$router.push('login')
       }
     },

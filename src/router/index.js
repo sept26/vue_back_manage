@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import login from '@/views/login'
 import home from '@/views/home'
 import dashboard from '@/views/modules/dashboard'
 import table from '@/views/modules/table'
@@ -8,10 +9,7 @@ Vue.use(Router)
 const routes = [
   {
     path: '/',
-    redirect: '/dashboard'
-  },
-  {
-    path: '/',
+    redirect: '/dashboard',
     name: 'home',
     component: home,
     children: [
@@ -26,6 +24,10 @@ const routes = [
         component: table
       }
     ]
+  },
+  {
+    path: '/login',
+    component: login
   }
 ]
 

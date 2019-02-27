@@ -16,14 +16,16 @@ Vue.use(ElementUI, {
 
 Vue.prototype.$axios = axios
 
-// router.beforeEach((to, from, next) => {
-//   const role = localStorage.getItem('ms_username')
-//   if (!role && to.path !== 'login') {
-//     next('/login')
-//   } else if (to.meta.permission) {
-//     role === 'admin' ? next() : next('403')
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  const role = localStorage.getItem('userName')
+  if (!role && to.path !== '/login') {
+    next('/login')
+  } else if (to.meta.permission) {
+    role === 'admin' ? next() : next('403')
+  } else {
+    next()
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({
